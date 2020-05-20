@@ -1,0 +1,16 @@
+Sorter.ServerHost: ankecvs.ikp.kfa-juelich.de
+Sorter.ServerPort: 5454
+Sorter.ParameterSource: file
+Sorter.ParameterSource: fileimport
+Sorter.ParSource.MField_default: MField_default
+Sorter.FDEdep2Ekin.3He.Mode: 0
+Sorter.ParSource.FDEdep2Ekin_3He: FDEdep2Ekin_3He
+#Sorter.SECluster.EnergyScalingFactor: 0.972469396
+Sorter.SECluster.EnergyScalingFactor: 1.019460725
+Sorter.MCFilterSEHits.PhePerMeV: 0.06
+Sorter.MagneticField: 10.
+Sorter.FD.FTHTrack.JustPhiTrack: true
+Sorter.FD.FTHTrack.UseEnergyRecalibration: true
+Sorter.FD.FTHTrack.UseFPCVH:        true
+Sorter.FD.FTHTrack.UseFPCSimple:    false
+
