@@ -49,8 +49,8 @@ eventselection::eventselection(const char * name):CAnalysisModule(name) {
 
 ////////////////////////////file with beam momentum and scattering angle////////////////////////////
 
-    beam_file.open("/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-PARIS-9.dat");
-    //beam_file.open("/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-CDBONN-9.dat");
+    //beam_file.open("/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-PARIS-9.dat");
+    beam_file.open("/data7/users/khreptak/SIMULATION_OUTPUT/PLUTO_OUTPUT/ppn_qf/ProtonVariables/ProtonVariables-CDBONN-9.dat");
     Double_t p_pp_beam_MC = 0.;
     Double_t Theta_scatt_MC = 0.;
     for (Int_t i = 1; i < 1000001; i++) {

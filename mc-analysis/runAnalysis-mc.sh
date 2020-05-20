@@ -1,7 +1,7 @@
 #!/bin/bash
 for X in `seq 1 1 10`; do
-    input="${WMC_DATA}/pd-ppn_qf-PARIS-$X.ems.bz2"
-    output="${OUTPUT_MC}/LUMIN/MC-ppn_qf-PARIS-x6-$X"
+    input="${WMC_DATA}/pd-ppn_qf-CDBONN-$X.ems.bz2"
+    output="${OUTPUT_MC}/LUMIN/MC-ppn_qf-CDBONN-x6-$X"
     if [ -e ${input} ]; then
         echo "MC number $X..."
         if [ -e ${output}.root ];then
