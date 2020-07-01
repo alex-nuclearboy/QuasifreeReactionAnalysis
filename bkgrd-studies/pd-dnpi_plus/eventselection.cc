@@ -544,7 +544,7 @@ void eventselection::ProcessEvent() {    //01//
 
 //////////////////////////////////////////LEVELS 1-2////////////////////////////////////////////
 
-        Bool_t lev[5][1];
+        Bool_t lev[7][1];
 
         //main level
         lev[1][0] = (ThetaFD_lab != 0.125);
@@ -558,8 +558,11 @@ void eventselection::ProcessEvent() {    //01//
         //cut on scattering angle in CD > 50 [deg]
         lev[4][0] = (lev[3][0] && (ThetaCD_lab > 0.873));
 
+	//cut on scattering angle in CD > 60 [deg]
+        lev[5][0] = (lev[3][0] && (ThetaCD_lab > 1.047));
+
         //loop
-        for (Int_t l = 1; l < 5; l++) {     //C01//
+        for (Int_t l = 1; l < 6; l++) {     //C01//
 
             if (lev[l][0]) {            //C02//
 
@@ -610,12 +613,13 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
 
     TString h_mc = Form("WMC");
 
-    TString g[5][1];
+    TString g[7][1];
     g[0][0] = Form("DATA_lev0");
     g[1][0] = Form("DATA_lev1");
     g[2][0] = Form("DATA_lev2");
     g[3][0] = Form("DATA_lev3");
     g[4][0] = Form("DATA_lev4");
+    g[5][0] = Form("DATA_lev5");
 
     TString h_st = Form("Statistics");
 
@@ -978,7 +982,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
     hChargedTracksFD[1][0]->GetYaxis()->SetTitle("counts");
     gHistoManager->Add(hChargedTracksFD[1][0],g[1][0]);
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hQ_lev%d",l);
         hQ[l][0] = new TH1F(hname,"",40,-70.,30.);
         hQ[l][0]->GetXaxis()->SetTitle("Q [MeV]");
@@ -987,7 +991,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
     }
 
     //FD//
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFWC1vsFRH1_lev%d",l);
         hEdepFWC1vsFRH1[l][0] =new TH2F(hname,"",1000,0.,0.01,1000,0.,0.5);
         hEdepFWC1vsFRH1[l][0]->GetXaxis()->SetTitle("Edep(FWC1) [GeV]");
@@ -995,7 +999,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFWC1vsFRH1[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFWC2vsFRH1_lev%d",l);
         hEdepFWC2vsFRH1[l][0] =new TH2F(hname,"",1000,0.,0.01,1000,0.,0.5);
         hEdepFWC2vsFRH1[l][0]->GetXaxis()->SetTitle("Edep(FWC2) [GeV]");
@@ -1003,7 +1007,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFWC2vsFRH1[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFTH1vsFRH1_lev%d",l);
         hEdepFTH1vsFRH1[l][0] =new TH2F(hname,"",1000,0.,0.02,1000,0.,0.5);
         hEdepFTH1vsFRH1[l][0]->GetXaxis()->SetTitle("Edep(FTH1) [GeV]");
@@ -1011,7 +1015,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFTH1vsFRH1[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFRH1vsFRH2_lev%d",l);
         hEdepFRH1vsFRH2[l][0] =new TH2F(hname,"",1000,0.,0.5,1000,0.,0.5);
         hEdepFRH1vsFRH2[l][0]->GetXaxis()->SetTitle("Edep(FRH1) [GeV]");
@@ -1019,7 +1023,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFRH1vsFRH2[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFRH2vsFRH3_lev%d",l);
         hEdepFRH2vsFRH3[l][0] =new TH2F(hname,"",1000,0.,0.5,1000,0.,0.5);
         hEdepFRH2vsFRH3[l][0]->GetXaxis()->SetTitle("Edep(FRH2) [GeV]");
@@ -1027,7 +1031,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFRH2vsFRH3[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepFWC1vsFRH1FRH2FRH3_lev%d",l);
         hEdepFWC1vsFRH1FRH2FRH3[l][0] =new TH2F(hname,"",1000,0.,0.01,1000,0.,1.);
         hEdepFWC1vsFRH1FRH2FRH3[l][0]->GetXaxis()->SetTitle("Edep(FWC1) [GeV]");
@@ -1035,7 +1039,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepFWC1vsFRH1FRH2FRH3[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hThetaFD_lev%d",l);
         hTheta_FDC[l][0] = new TH1F(hname,"",250,0.,25.);
         hTheta_FDC[l][0]->GetXaxis()->SetTitle("#theta^{lab}_{FD} [deg]");
@@ -1043,7 +1047,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hTheta_FDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hPhiFD_lev%d",l);
         hPhi_FDC[l][0] = new TH1F(hname,"",360,-180.,180.);
         hPhi_FDC[l][0]->GetXaxis()->SetTitle("#phi^{lab}_{FD} [deg]");
@@ -1051,7 +1055,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hPhi_FDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hTimeFD_lev%d",l);
         hTime_FDC[l][0] = new TH1F(hname,"",1000,0.,2500.);
         hTime_FDC[l][0]->GetXaxis()->SetTitle("Time_{FD} [ns]");
@@ -1060,7 +1064,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
     }
 
     //charged in CD//
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepPSBvsSEC_lev%d",l);
         hEdepPSBvsSEC[l][0] = new TH2F(hname,"",1000,0.,0.75,1000,0.,0.025);
         hEdepPSBvsSEC[l][0]->GetXaxis()->SetTitle("E_{dep(SEC)} [GeV]");
@@ -1068,7 +1072,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepPSBvsSEC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepPSBvsSigMom_lev%d",l);
         hEdepPSBvsSigMom[l][0] = new TH2F(hname,"",1000,-2.5,2.5,1000,0.,0.025);
         hEdepPSBvsSigMom[l][0]->GetXaxis()->SetTitle("Momentum [GeV/c]");
@@ -1076,7 +1080,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepPSBvsSigMom[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hEdepSECvsSigMom_lev%d",l);
         hEdepSECvsSigMom[l][0] = new TH2F(hname,"",1000,-2.5,2.5,1000,0.,0.75);
         hEdepSECvsSigMom[l][0]->GetXaxis()->SetTitle("Momentum [GeV/c]");
@@ -1084,7 +1088,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hEdepSECvsSigMom[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hMomentumCD_lev%d",l);
         hMom_CDC[l][0] = new TH1F(hname,"",750,0.,2.5);
         hMom_CDC[l][0]->GetXaxis()->SetTitle("p^{lab}_{p} [GeV/c]");
@@ -1092,7 +1096,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hMom_CDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hThetaCD_lev%d",l);
         hTheta_CDC[l][0] = new TH1F(hname,"",360,0.,180.);
         hTheta_CDC[l][0]->GetXaxis()->SetTitle("#theta^{lab}_{CD} [deg]");
@@ -1100,7 +1104,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hTheta_CDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hPhiCD_lev%d",l);
         hPhi_CDC[l][0] = new TH1F(hname,"",360,-180.,180.);
         hPhi_CDC[l][0]->GetXaxis()->SetTitle("#phi^{lab}_{CD} [deg]");
@@ -1108,7 +1112,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hPhi_CDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hTimeCD_lev%d",l);
         hTime_CDC[l][0] = new TH1F(hname,"",1000,0.,2500.);
         hTime_CDC[l][0]->GetXaxis()->SetTitle("Time_{CD} [ns]");
@@ -1116,7 +1120,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hTime_CDC[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hThetaFDvsThetaCD_lev%d",l);
         hTheta_FDvsTheta_CD[l][0] = new TH2F(hname,"",540,0.,20.,540,0.,180.);
         hTheta_FDvsTheta_CD[l][0]->GetXaxis()->SetTitle("#theta_{FD} [deg]");
@@ -1124,7 +1128,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hTheta_FDvsTheta_CD[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hTimeDifference_lev%d",l);
         hDeltaTime[l][0] = new TH1F(hname,"",1000,-50.,50.);
         hDeltaTime[l][0]->GetXaxis()->SetTitle("Time difference [ns]");
@@ -1132,7 +1136,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hDeltaTime[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hDeltaPhi_lev%d",l);
         hDelta_Phi[l][0] = new TH1F(hname,"",360,0.,360.);
         hDelta_Phi[l][0]->GetXaxis()->SetTitle("#Delta#phi [deg]");
@@ -1140,7 +1144,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hDelta_Phi[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hDeltaPhi_abs_lev%d",l);
         hDelta_Phi_abs[l][0] = new TH1F(hname,"",360,0.,360.);
         hDelta_Phi_abs[l][0]->GetXaxis()->SetTitle("|#Delta#phi| [deg]");
@@ -1148,7 +1152,7 @@ void eventselection::SetupSpectra(const char * lpath) {   //02//
         gHistoManager->Add(hDelta_Phi_abs[l][0],g[l][0]);
     }
 
-    for (Int_t l = 1; l < 5; l++) {
+    for (Int_t l = 1; l < 6; l++) {
         TString hname = Form("hDeltaPhi_sym_lev%d",l);
         hDelta_Phi_sym[l][0] = new TH1F(hname,"",360,0.,360.);
         hDelta_Phi_sym[l][0]->GetXaxis()->SetTitle("(2#pi+#Delta#phi)mod2#pi [deg]");

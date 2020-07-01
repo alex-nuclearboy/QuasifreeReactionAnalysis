@@ -1,7 +1,7 @@
 #!/bin/bash
 for X in `seq 1 1 5`; do
     input="/data10/users/khreptak/SIMULATION/WMC/pd-dnpi_plus-$X.ems.bz2"
-    output="${OUTPUT_MC}/LUMIN/MC-dnpi_plus_thetacut-x6-$X"
+    output="${OUTPUT_MC}/LUMIN/MC-dnpi_plus_thetacut2-x1-$X"
     if [ -e ${input} ]; then
         echo "MC number $X..."
         if [ -e ${output}.root ];then

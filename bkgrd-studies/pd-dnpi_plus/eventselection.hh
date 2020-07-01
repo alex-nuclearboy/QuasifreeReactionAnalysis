@@ -104,25 +104,25 @@ protected:
     //Reconstructed
     TH1F    *hp_beam[1][1];
 
-    TH1F    *hQ[5][1];
+    TH1F    *hQ[7][1];
 
     TH1F    *hTracksCD[2][1],*hTracksFD[2][1];
     TH1F    *hNeutralTracksCD[2][1],*hNeutralTracksFD[2][1],*hChargedTracksCD[2][1],*hChargedTracksFD[2][1];
 
-    TH1F    *hTime_FDC[5][1],*hTheta_FDC[5][1],*hPhi_FDC[5][1];
-    TH1F    *hTime_CDC[5][1],*hTheta_CDC[5][1],*hPhi_CDC[5][1],*hMom_CDC[5][1];
-    TH1F    *hTime_CDN[5][1],*hTheta_CDN[5][1],*hPhi_CDN[5][1],*hMom_CDN[5][1];
+    TH1F    *hTime_FDC[7][1],*hTheta_FDC[7][1],*hPhi_FDC[7][1];
+    TH1F    *hTime_CDC[7][1],*hTheta_CDC[7][1],*hPhi_CDC[7][1],*hMom_CDC[7][1];
+    TH1F    *hTime_CDN[7][1],*hTheta_CDN[7][1],*hPhi_CDN[7][1],*hMom_CDN[7][1];
 
-    TH2F    *hEdepFWC1vsFRH1[5][1],*hEdepFWC2vsFRH1[5][1],*hEdepFWC1vsFRH1FRH2FRH3[5][1];
-    TH2F    *hEdepFTH1vsFRH1[5][1],*hEdepFRH1vsFRH2[5][1],*hEdepFRH2vsFRH3[5][1];
+    TH2F    *hEdepFWC1vsFRH1[7][1],*hEdepFWC2vsFRH1[7][1],*hEdepFWC1vsFRH1FRH2FRH3[7][1];
+    TH2F    *hEdepFTH1vsFRH1[7][1],*hEdepFRH1vsFRH2[7][1],*hEdepFRH2vsFRH3[7][1];
 
-    TH2F    *hEdepPSBvsSEC[5][1],*hEdepPSBvsSigMom[5][1],*hEdepSECvsSigMom[5][1];
+    TH2F    *hEdepPSBvsSEC[7][1],*hEdepPSBvsSigMom[7][1],*hEdepSECvsSigMom[7][1];
 
-    TH2F    *hTheta_FDvsTheta_CD[5][1];
+    TH2F    *hTheta_FDvsTheta_CD[7][1];
 
-    TH1F    *hDeltaTime[5][1];
+    TH1F    *hDeltaTime[7][1];
 
-    TH1F    *hDelta_Phi[5][1],*hDelta_Phi_abs[5][1],*hDelta_Phi_sym[5][1];
+    TH1F    *hDelta_Phi[7][1],*hDelta_Phi_abs[7][1],*hDelta_Phi_sym[7][1];
 
     ClassDef(eventselection,0);
 
